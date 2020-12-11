@@ -17,12 +17,15 @@ import { TransferComponent } from './transfer/transfer.component';
 import {​​​​​​​​ HttpClientModule, HTTP_INTERCEPTORS }​​​​​​​​ from'@angular/common/http';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JWTInterceptor } from './_interceptors/jwt.interceptor';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    LoginComponent,
     routingComponents,
     TransferComponent,
   ],
@@ -37,7 +40,9 @@ import { JWTInterceptor } from './_interceptors/jwt.interceptor';
     MatFormFieldModule,
     MatCheckboxModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
