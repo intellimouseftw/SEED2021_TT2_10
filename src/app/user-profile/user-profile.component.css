@@ -9,3 +9,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.hyperlink {
+    border-bottom: 1px solid;
+    color: blue;
+    cursor: pointer;
+}

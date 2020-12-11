@@ -1,12 +1,7 @@
-<form>
-    <input type="number" value="topupValue">
-    <input type="submit" click="clickTopUp($event)" value="Top Up">
-</form>
-
 <h2>User Detail</h2>
 <ul *ngIf="userDetail">
   <li>
-    <span>ID: </span>{{userDetail.custID}}
+    <span>ID: </span><a (click)="clickSelectedUser(userDetail.custID)" class="hyperlink">{{userDetail.custID}}</a>
   </li>
   <li>
     <span>First Name: </span>{{userDetail.firstName}}
@@ -49,7 +44,14 @@
         <span>Linked: </span>{{accountDetail.linked}}
     </li>
     <li>
-        <input type="number">
-        <button (click)="clickTopUp($event)">Top Up</button>
-    </li>
+        <form [formGroup]="topupForm" (ngSubmit)="clickTopUp()" >
+            <div>
+                <label for="topupValue">Top Up Value: </label>
+                <input type="number" id="topupValue" formControlName="topupValue">
+            </div>
+            <div>
+                <button>Top Up</button>
+            </div>
+        </form>
+    </li>    
 </ul>

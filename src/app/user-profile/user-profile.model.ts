@@ -17,3 +17,13 @@ export interface AccountDetailResponse {
     availableBal: number;
     linked: boolean;
 }
+
+export interface AccountBalanceRequest {
+    custID: number;
+    Amount: number;
+}
+
+export interface AccountBalanceResponse {
+    statusCode: string;
+    message: string;
+}
