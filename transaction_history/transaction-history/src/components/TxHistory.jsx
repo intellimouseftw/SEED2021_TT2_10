@@ -58,7 +58,7 @@ function TxHistory() {
                 <form className="form-group" onSubmit={handleDateFilter}>
                     <div className="row">
                         <div className="col">
-                        <b>Filter transactions by date</b>
+                            <b>Filter transactions by date</b>
                         </div>
                     </div>
                     <div className="row">
@@ -85,20 +85,20 @@ function TxHistory() {
                     <div className="container-fluid text-center">
                         {txHist.map((singleTx, txID) => {
                             return (
-                                <TxDetails data={singleTx} txID={txID + 1} userDB={userDB} />
+                                <TxDetails key={txID} data={singleTx} txID={txID + 1} userDB={userDB} />
                             )
                         })}
                     </div> :
                     <div className="container-fluid text-center">
                         {txHist.slice(0, 3).map((singleTx, txID) => {
                             return (
-                                <TxDetails data={singleTx} txID={txID + 1} userDB={userDB} />
+                                <TxDetails key={txID} data={singleTx} txID={txID + 1} userDB={userDB} />
                             )
                         })}
                         {txHist.length > 3 && <button className="btn btn-outline-primary" onClick={() => setExpanded(true)}>View All Transactions...</button>}
                     </div>
             }
-        </div >
+        </div>
     )
 }
 
