@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
+const { createProxyMiddleware } = require("http-proxy-middleware");
+
+const API_SERVICE_URL =
+  "https://u8fpqfk2d4.execute-api.ap-southeast-1.amazonaws.com/techtrek2020";
 
 const loginRoute = require("./routes/login");
 const extendSessionRoute = require("./routes/extendSession");
@@ -40,8 +44,15 @@ app.use((req, res, next) => {
 
 // Define Routes
 
-app.use("/", loginRoute);
-app.use("/", extendSessionRoute);
+app.use(
+  "/login",
+  loginRoute
+  // createProxyMiddleware({
+  //   target: API_SERVICE_URL + "/login",
+  //   changeOrigin: false,
+  // })
+);
+app.use("/token", extendSessionRoute);
 
 app.use((error, req, res, next) => {
   console.log(error);
