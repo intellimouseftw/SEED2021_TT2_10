@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'SEED2021TT210';
+  login = true;
+
+  onLogin = (event: any): void => {
+    this.login = event;
+  }
 }

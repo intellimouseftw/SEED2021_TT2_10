@@ -1,0 +1,74 @@
+<div class="container">
+
+    <h2>Tranfer</h2>
+
+    <div *ngIf="completed">
+        <mat-card>
+            <mat-grid-list cols="1" rowHeight="80px">
+                <mat-grid-tile>
+                    Transaction completed!
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <button mat-raised-button color="primary" (click)="handleRedo()"> Make another transfer </button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card>
+   
+
+    </div>
+
+    <div *ngIf="!completed">
+        <mat-form-field appearance="fill">
+            <mat-label>Transfer To</mat-label>
+            <mat-select (selectionChange)="onChange($event)">
+                <mat-option *ngFor="let user of users" [value]="user">
+                    {{user.lastName}}
+                </mat-option>
+            </mat-select>
+            <mat-hint *ngIf="errors.payeeID.error">{{errors.payeeID.errorText}}</mat-hint>
+        </mat-form-field>
+
+        <mat-card>
+            <mat-grid-list cols="1" rowHeight="80px">
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Amount</mat-label>
+                        <input matInput required (change)="handleFieldChange($event, 'amount')" type="number">
+                        <mat-hint *ngIf="errors.amount.error">{{errors.amount.errorText}}</mat-hint>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Expenses Category</mat-label>
+                        <input matInput required (change)="handleFieldChange($event, 'expensesCat')">
+                        <mat-hint *ngIf="errors.expensesCat.error">{{errors.expensesCat.errorText}}</mat-hint>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Message</mat-label>
+                        <input matInput (change)="handleFieldChange($event, 'message')">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <section class="checkbox-section">
+                        <mat-checkbox class="checkbox-margin" (change)="handleFieldChange($event, 'eGift')">E-Gift?
+                        </mat-checkbox>
+                    </section>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <div class='buttons'><button mat-raised-button color="primary" (click)="handleSubmit()"> Submit </button>
+            </div>
+
+        </mat-card>
+    </div>
+
+
+
+
+</div>
