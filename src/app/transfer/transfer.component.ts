@@ -72,14 +72,21 @@ export class TransferComponent implements OnInit {
 
   handleSubmit() {
     let allValidated = this.checkAllValidation();
-    console.log("submitted")
+    
+    if (allValidated) {
+      console.log("Success")
+      console.log(this.values)
+    } else {
+      console.log("fail!!")
+    }
+
 
   }
 
   handleFieldChange(event: any, id: string) {
    
     let value = (id === 'eGift' ?
-      event.checked : event.target.value);
+      event.checked : (id === 'amount' ? parseInt(event.target.value) : event.target.value));
 
     let values = this.values;
     values[id] = value;
@@ -119,8 +126,6 @@ export class TransferComponent implements OnInit {
         }
         break;
       case "expensesCat":
-        console.log("yo")
-        console.log
         if (value === null || value === '') {
           errors.expensesCat.error = true;
           errors.expensesCat.errorText = 'Please fill in';
@@ -135,11 +140,7 @@ export class TransferComponent implements OnInit {
         errors[id].errorText = '';
 
     }
-
-
     this.errors = errors
-
-
     return errors[id].error;
   }
 
