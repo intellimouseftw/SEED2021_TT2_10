@@ -1,13 +1,18 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-    <div>
-        <label for="usernameField">Username</label>
-        <input type="text" id="usernameField" formControlName="username">
-    </div>
-    <div>
-        <label for="passwordField">Password</label>
-        <input type="password" id="passwordField" formControlName="password">
-    </div>
-    <div>
-        <button>Login</button>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="LoginForm" >
+        <div class="Title">
+            Login
+        </div>
+        <div class="InputRow">
+            <label class="Label" for="usernameField">Username</label>
+            <input class="InputField" type="text" id="usernameField" placeholder=" Username" formControlName="username">
+        </div>
+        <div class="InputRow">
+            <label class="Label" for="passwordField">Password</label>
+            <input class="InputField" type="password" id="passwordField" placeholder=" Password" formControlName="password">
+        </div>
+        <div class="LoginButtonContainer">
+            <button class="LoginButton">Login</button>
+        </div>
     </div>
 </form>
