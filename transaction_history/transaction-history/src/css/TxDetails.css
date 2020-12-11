@@ -1,3 +1,10 @@
 .enlarge_icon {
     transform: scale(3);
 }
+
+.top_left  {
+    position: absolute;
+    left: 0;
+    z-index: 0;
+    padding: 10px;
+  }
