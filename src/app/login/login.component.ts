@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../_services/Auth/auth-service.service';
+import { UserDataService } from '../_services/UserData/user-data.service';
 
 @Component({
   selector: 'app-login',
@@ -20,14 +21,14 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.form.username.value, this.form.password.value).subscribe(data => {
       if (typeof data !== 'string') {
-        console.log(data);
+        // Navigate to user page
       } else {
         // Error occured
       }
     });
   }
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private userData: UserDataService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
