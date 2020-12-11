@@ -68,3 +68,20 @@ export class AppComponent {
     alert($event);
   }
 }
+
+######################################################################
+
+Data handling:
+
+- Breaking down data into its components
+- Using broken down data to generate more intuitive ones
+
+Hooks to render state updates dynamically:
+
+- useEffect()
+- useState()
+
+UI/UX:
+
+- Filtering by date
+- Shortening display by default

@@ -8,12 +8,14 @@ import { txData, userDBdata } from '../static_data'
 function TxHistory() {
 
     const [txHist, setTxHist] = useState(txData)
-
     const [userDB, setUserDB] = useState(userDBdata)
+
+    var userDBcopy
 
     // useEffect(() => {
     //     getTxData(custID).then((response) => {
     //         setTxHist(response.data)
+    //         userDBcopy=response.data
     //     })
     // }, [custID])
 
