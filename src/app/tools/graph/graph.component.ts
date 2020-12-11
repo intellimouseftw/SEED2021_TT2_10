@@ -291,6 +291,11 @@ export class GraphComponent implements OnInit {
 
   ngOnInit(): void {
     const arr = [];
+    this.transactionsData.sort((a, b): number => {
+      const dateA = new Date(a.dateTime);
+      const dateB = new Date(b.dateTime);
+      return dateB.getTime() - dateA.getTime();
+    });
     for (let i=0; i < this.transactionsData.length; i++) {
       const data = this.transactionsData[i];
       arr.push({
