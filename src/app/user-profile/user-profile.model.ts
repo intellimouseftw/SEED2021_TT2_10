@@ -1,5 +1,5 @@
 export interface UserDetailResponse {
-    
+
     custID: number;
     firstName: string;
     lastName: string;
@@ -9,4 +9,11 @@ export interface UserDetailResponse {
     phoneNumber: string;
     email: string;
     address: string;
+}
+
+export interface AccountDetailResponse {
+    accountName: string;
+    accountNumber: number;
+    availableBal: number;
+    linked: boolean;
 }

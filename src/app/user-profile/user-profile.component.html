@@ -1,4 +1,9 @@
-<h2>User Profile</h2>
+<form>
+    <input type="number" value="topupValue">
+    <input type="submit" click="clickTopUp($event)" value="Top Up">
+</form>
+
+<h2>User Detail</h2>
 <ul *ngIf="userDetail">
   <li>
     <span>ID: </span>{{userDetail.custID}}
@@ -27,4 +32,24 @@
   <li>
     <span>Address: </span>{{userDetail.address}}
   </li>
+</ul>
+
+<h2>Account Detail</h2>
+<ul *ngIf="accountDetail">
+    <li>
+        <span>Account Name: </span>{{accountDetail.accountName}}
+    </li>
+    <li>
+        <span>Account Number: </span>{{accountDetail.accountNumber}}
+    </li>
+    <li>
+        <span>Available Balance: </span>{{accountDetail.availableBal}}
+    </li>
+    <li>
+        <span>Linked: </span>{{accountDetail.linked}}
+    </li>
+    <li>
+        <input type="number">
+        <button (click)="clickTopUp($event)">Top Up</button>
+    </li>
 </ul>
