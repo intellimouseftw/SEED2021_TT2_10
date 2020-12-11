@@ -1,1 +1,30 @@
-<p>user-profile works!</p>
+<h2>User Profile</h2>
+<ul *ngIf="userDetail">
+  <li>
+    <span>ID: </span>{{userDetail.custID}}
+  </li>
+  <li>
+    <span>First Name: </span>{{userDetail.firstName}}
+  </li>
+  <li>
+    <span>Last Name: </span>{{userDetail.lastName}}
+  </li>
+  <li>
+    <span>NRIC: </span>{{userDetail.nric}}
+  </li>
+  <li>
+    <span>Gender: </span>{{userDetail.gender}}
+  </li>
+  <li>
+    <span>Age: </span>{{userDetail.age}}
+  </li>
+  <li>
+    <span>Phone Number: </span>{{userDetail.phoneNumber}}
+  </li>
+  <li>
+    <span>Email: </span>{{userDetail.email}}
+  </li>
+  <li>
+    <span>Address: </span>{{userDetail.address}}
+  </li>
+</ul>
