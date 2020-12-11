@@ -30,49 +30,59 @@ function TxDetails(props) {
         return (date + "   " + time)
     }
 
-    console.log(AdjustDateString(props.data.dateTime))
+    function RetrieveUserFullName(custID) {
+        var userData = props.userDB.find((userData) => {
+            return userData.custID === custID
+        })
+        return userData.firstName+" "+userData.lastName
+    }
 
+    function checkReceiving() {
+        return props.data.custID === 10
+    }
+
+    let isReceiving = checkReceiving()
 
     return (
-        <div className="card m-2" style={{ minWidth: "500px" }}>
-            <div className="container-sm">
-                <div className="row">
-                    <div className="col">
-                        {IconSelector(props.data.expensesCat)}
-                    </div>
-                    <div className="col">
-                        <p>Amount {props.data.amount}</p>
-                    </div>
-                </div>
-            </div>
-            <div className="card-body">
+            <div className="card m-2" style={{ minWidth: "500px" }}>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col">
-                            <p>Transaction ID</p>
-                            <p> {props.txID} </p>
+                            {IconSelector(props.data.expensesCat)}
                         </div>
                         <div className="col">
-                            <p>Transaction Date</p>
-                            <p>{AdjustDateString(props.data.dateTime)}</p>
-                        </div>
-                        <div className="col">
-                            <p>Paid to</p>
-                            <p>{props.data.custID}</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <p>Message</p>
-                            <p>{props.data.message}</p>
+                            <b>Amount</b>{isReceiving ? <h2 className="text-success">+{props.data.amount}</h2> : <h2 className="text-danger">-{props.data.amount}</h2>}
                         </div>
                     </div>
                 </div>
+                <div className="card-body">
+                    <div className="container-fluid text-center">
+                        <div className="row">
+                            <div className="col">
+                                <b>Transaction ID</b>
+                                <p> {props.txID} </p>
+                            </div>
+                            <div className="col">
+                                <b>Transaction Date</b>
+                                <p>{AdjustDateString(props.data.dateTime)}</p>
+                            </div>
+                            <div className="col">
+                                {isReceiving ? <b>Received from</b> : <b>Paid to</b>}
+                                <p>{RetrieveUserFullName(props.data.custID)}</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <b>Message</b>
+                                <p>{props.data.message}</p>
+                            </div>
+                        </div>
+                    </div>
 
+                </div>
             </div>
-        </div>
-    )
+        )
 
-}
+    }
 
-export default TxDetails
+    export default TxDetails

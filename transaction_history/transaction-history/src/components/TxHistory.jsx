@@ -1,38 +1,55 @@
 import React, { useState, useEffect } from 'react'
 import { getTxData } from '../api/getTxData.api'
-import { BrowserRouter, Switch, Link } from 'react-router-dom'
+import { getUserData } from '../api/getUserData.api'
 import TxDetails from './TxDetails'
 
-import { txData } from '../static_data'
+import { txData, userDBdata } from '../static_data'
 
 function TxHistory() {
 
     const custID = 10
-    const [TxHist, setTxHist] = useState([])
+    const [txHist, setTxHist] = useState([])
 
-    console.log(getTxData(10))
-    
-    useEffect(()=> {
-        getTxData(custID).then((response)=> {
-            setTxHist(response.data)
-            })
-        }, [custID])
+    const [userDB, setUserDB] = useState([])
 
-    useEffect(() => {
-        console.log(txData)
-    }
-    )
+    // console.log(getTxData(10))
+
+    // useEffect(() => {
+    //     getTxData(custID).then((response) => {
+    //         setTxHist(response.data)
+    //     })
+    // }, [custID])
+
+    // useEffect(() => {
+    //     getUserData().then((response) => {
+    //         setUserDB(response.data)
+    //     })
+    // }, [])
+
+    const [isExpanded, setExpanded] = useState(false)
+
 
     return (
-        <BrowserRouter>
-            <div className="container-sm">
-                {txData.map((singleTx, txID) => {
-                    return (
-                        <TxDetails data={singleTx} txID={txID} />
-                    )
-                })}
-            </div>
-        </BrowserRouter>
+        <div className="container-fluid">
+        <h1>Transaction History</h1>
+        {isExpanded ? 
+        <div className="container-fluid text-center">
+            {txData.map((singleTx, txID) => {
+                return (
+                    <TxDetails data={singleTx} txID={txID+1} userDB={userDBdata} />
+                )
+            })}
+        </div> :
+        <div className="container-fluid text-center">
+            {txData.slice(0,3).map((singleTx, txID) => {
+                return (
+                    <TxDetails data={singleTx} txID={txID+1} userDB={userDBdata} />
+                )
+            })}
+            <button className="btn btn-outline-primary" onClick={()=>setExpanded(true)}>View All Transactions...</button>
+        </div>
+        }
+        </div>
     )
 }
 
