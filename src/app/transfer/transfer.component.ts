@@ -15,6 +15,9 @@ export class TransferComponent implements OnInit {
   errorMsg = 'noError';
   users = [{ user: "" }];
   usersResult$: Observable<any>;
+  transactionResult$: Observable<any>;
+  completed = false;
+
   errors: { [key: string]: any } = {
     payeeID: {
       error: false,
@@ -72,10 +75,22 @@ export class TransferComponent implements OnInit {
 
   handleSubmit() {
     let allValidated = this.checkAllValidation();
-    
+  
     if (allValidated) {
       console.log("Success")
       console.log(this.values)
+      this.completed = true;
+      this.transactionResult$ = this.transferService.postAddTransaction(this.values).pipe(
+        catchError(error => {
+          this.errorMsg = error;
+          this.error = true;
+          return of([]);
+        })
+      );
+  
+      this.transactionResult$.subscribe((result) => {
+        console.log(result)
+      })
     } else {
       console.log("fail!!")
     }
@@ -83,8 +98,13 @@ export class TransferComponent implements OnInit {
 
   }
 
+
+  handleRedo() {
+    this.completed = false;
+
+  }
+
   handleFieldChange(event: any, id: string) {
-   
     let value = (id === 'eGift' ?
       event.checked : (id === 'amount' ? parseInt(event.target.value) : event.target.value));
 
@@ -94,11 +114,9 @@ export class TransferComponent implements OnInit {
 
     if (id === "payeeID" || id === "amount" || id === "expensesCat") {
       this.checkValidation(id);
-
     }
-
-
   }
+
 
   checkValidation(id: string) {
 
