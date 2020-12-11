@@ -8,18 +8,24 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JWTInterceptor } from './_interceptors/jwt.interceptor';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { GraphComponent } from './tools/graph/graph.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserProfileComponent,
-    LoginComponent
+    LoginComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxChartsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true },
