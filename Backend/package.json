@@ -20,7 +20,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "SET NODE_ENV=production& SET MONGO_USER=geraldtechtrek& SET MONGO_PASSWORD=dbstechtrek& SET MONGO_DEFAULT_DATABASE=techtrek& nodemon app.js",
+    "start": "SET NODE_ENV=production& SET MONGO_USER=dbstechtrek& SET MONGO_PASSWORD=dbstechtrek& SET MONGO_DEFAULT_DATABASE=techtrek& nodemon app.js",
     "server": "node app.js"
   },
   "author": "",

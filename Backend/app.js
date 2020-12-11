@@ -24,7 +24,7 @@ mongoose
 
 app.use(helmet());
 app.use(compression());
-app.use(morgan("combined", { stream: accessLogStream }));
+// app.use(morgan("combined", { stream: accessLogStream }));
 
 app.use(bodyParser.json());
 
@@ -40,8 +40,8 @@ app.use((req, res, next) => {
 
 // Define Routes
 
-app.use("/login", loginRoute);
-app.use("/extendSession", extendSessionRoute);
+app.use("/", loginRoute);
+app.use("/", extendSessionRoute);
 
 app.use((error, req, res, next) => {
   console.log(error);
