@@ -11,7 +11,8 @@ import { catchError } from 'rxjs/operators';
 })
 export class TransferComponent implements OnInit {
   error = false;
-  userId = 10;
+  authUser =JSON.parse(localStorage.getItem('auth-user'));
+  userId = this.authUser.custID;
   errorMsg = 'noError';
   users = [{ user: "" }];
   usersResult$: Observable<any>;
@@ -34,7 +35,7 @@ export class TransferComponent implements OnInit {
   }
 
   values: { [key: string]: any } = {
-    "custID": 10,
+    "custID": this.userId,
     "payeeID": null,
     "dateTime": new Date(),
     "amount": null,
@@ -45,6 +46,7 @@ export class TransferComponent implements OnInit {
 
 
   constructor(private transferService: TransferService) {
+    console.log()
     this.usersResult$ = transferService.postUsersData().pipe(
       catchError(error => {
         this.errorMsg = error;
