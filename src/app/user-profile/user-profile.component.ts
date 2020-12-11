@@ -71,14 +71,18 @@ export class UserProfileComponent implements OnInit {
 
   getUserProfile() { 
     this.userProfileService.getUserDetails().subscribe((data)=>{
-      this.userDetail = data;
+      // this.userDetail = data;  // using mockdata, as facing issue with XMLHttpRequest
+
+      // console log to show that api works
       console.log(data);
     });
   }
 
   getAccountProfile(custID) { 
     this.userProfileService.getAccountDetails(custID).subscribe((data)=>{
-      this.accountDetail = data;
+      // this.accountDetail = data; // using mockdata, as facing issue with XMLHttpRequest
+      
+      // console log to show that api works
       this.custID = custID; // keep track of selected custID
       console.log(data);
     });
