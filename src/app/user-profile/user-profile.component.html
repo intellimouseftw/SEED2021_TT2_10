@@ -1,57 +1,125 @@
-<h2>User Detail</h2>
-<ul *ngIf="userDetail">
-  <li>
-    <span>ID: </span><a (click)="clickSelectedUser(userDetail.custID)" class="hyperlink">{{userDetail.custID}}</a>
-  </li>
-  <li>
-    <span>First Name: </span>{{userDetail.firstName}}
-  </li>
-  <li>
-    <span>Last Name: </span>{{userDetail.lastName}}
-  </li>
-  <li>
-    <span>NRIC: </span>{{userDetail.nric}}
-  </li>
-  <li>
-    <span>Gender: </span>{{userDetail.gender}}
-  </li>
-  <li>
-    <span>Age: </span>{{userDetail.age}}
-  </li>
-  <li>
-    <span>Phone Number: </span>{{userDetail.phoneNumber}}
-  </li>
-  <li>
-    <span>Email: </span>{{userDetail.email}}
-  </li>
-  <li>
-    <span>Address: </span>{{userDetail.address}}
-  </li>
-</ul>
 
-<h2>Account Detail</h2>
-<ul *ngIf="accountDetail">
+<div *ngIf="userDetailList">
+    <h2>User Detail</h2>
+    <ul *ngFor="let item of userDetailList">
+        <li>
+            <span>ID: </span><a (click)="clickSelectedUser(item.custID)" class="hyperlink">{{item.custID}}</a>
+        </li>
+        <li>
+            <span>First Name: </span>{{item.firstName}}
+        </li>
+        <li>
+            <span>Last Name: </span>{{item.lastName}}
+        </li>
+        <li>
+            <span>NRIC: </span>{{item.nric}}
+        </li>
+        <li>
+            <span>Gender: </span>{{item.gender}}
+        </li>
+        <li>
+            <span>Age: </span>{{item.age}}
+        </li>
+        <li>
+            <span>Phone Number: </span>{{item.phoneNumber}}
+        </li>
+        <li>
+            <span>Email: </span>{{item.email}}
+        </li>
+        <li>
+            <span>Address: </span>{{item.address}}
+        </li>
+    </ul>
+</div>
+
+<div  *ngIf="userDetail">
+    <h2>User Detail</h2>
+    <ul>
     <li>
-        <span>Account Name: </span>{{accountDetail.accountName}}
+        <span>ID: </span><a (click)="clickSelectedUser(userDetail.custID)" class="hyperlink">{{userDetail.custID}}</a>
     </li>
     <li>
-        <span>Account Number: </span>{{accountDetail.accountNumber}}
+        <span>First Name: </span>{{userDetail.firstName}}
     </li>
     <li>
-        <span>Available Balance: </span>{{accountDetail.availableBal}}
+        <span>Last Name: </span>{{userDetail.lastName}}
     </li>
     <li>
-        <span>Linked: </span>{{accountDetail.linked}}
+        <span>NRIC: </span>{{userDetail.nric}}
     </li>
     <li>
-        <form [formGroup]="topupForm" (ngSubmit)="clickTopUp()" >
-            <div>
-                <label for="topupValue">Top Up Value: </label>
-                <input type="number" id="topupValue" formControlName="topupValue">
-            </div>
-            <div>
-                <button>Top Up</button>
-            </div>
-        </form>
-    </li>    
-</ul>
+        <span>Gender: </span>{{userDetail.gender}}
+    </li>
+    <li>
+        <span>Age: </span>{{userDetail.age}}
+    </li>
+    <li>
+        <span>Phone Number: </span>{{userDetail.phoneNumber}}
+    </li>
+    <li>
+        <span>Email: </span>{{userDetail.email}}
+    </li>
+    <li>
+        <span>Address: </span>{{userDetail.address}}
+    </li>
+    </ul>
+</div>
+
+<div *ngIf="accountDetailList">
+    <h2>Account Detail</h2>
+    <ul *ngFor="let item of accountDetailList">
+        <li>
+            <span>Account Name: </span>{{accountDetail.accountName}}
+        </li>
+        <li>
+            <span>Account Number: </span>{{accountDetail.accountNumber}}
+        </li>
+        <li>
+            <span>Available Balance: </span>{{accountDetail.availableBal}}
+        </li>
+        <li>
+            <span>Linked: </span>{{accountDetail.linked}}
+        </li>
+        <li>
+            <form [formGroup]="topupForm" (ngSubmit)="clickTopUp()" >
+                <div>
+                    <label for="topupValue">Top Up Value: </label>
+                    <input type="number" id="topupValue" formControlName="topupValue">
+                </div>
+                <div>
+                    <button>Top Up</button>
+                </div>
+            </form>
+        </li>    
+    </ul>
+</div>
+
+
+<div *ngIf="accountDetail">
+    <h2>Account Detail</h2>
+    <ul>
+        <li>
+            <span>Account Name: </span>{{accountDetail.accountName}}
+        </li>
+        <li>
+            <span>Account Number: </span>{{accountDetail.accountNumber}}
+        </li>
+        <li>
+            <span>Available Balance: </span>{{accountDetail.availableBal}}
+        </li>
+        <li>
+            <span>Linked: </span>{{accountDetail.linked}}
+        </li>
+        <li>
+            <form [formGroup]="topupForm" (ngSubmit)="clickTopUp()" >
+                <div>
+                    <label for="topupValue">Top Up Value: </label>
+                    <input type="number" id="topupValue" formControlName="topupValue">
+                </div>
+                <div>
+                    <button>Top Up</button>
+                </div>
+            </form>
+        </li>    
+    </ul>
+</div>
