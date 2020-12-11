@@ -87,10 +87,20 @@ export class TransferComponent implements OnInit {
           return of([]);
         })
       );
-  
+        
       this.transactionResult$.subscribe((result) => {
         console.log(result)
       })
+
+     this.values = {
+        "custID": 10,
+        "payeeID": null,
+        "dateTime": new Date(),
+        "amount": null,
+        "expensesCat": null,
+        "eGift": false,
+        "message": null,
+      }
     } else {
       console.log("fail!!")
     }
