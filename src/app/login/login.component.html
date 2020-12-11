@@ -1,8 +1,13 @@
-<div>
-    <label for="usernameField">Username</label>
-    <input type="text" id="usernameField">
-</div>
-<div>
-    <label for="passwordField">Password</label>
-    <input type="text" id="passwordField">
-</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+    <div>
+        <label for="usernameField">Username</label>
+        <input type="text" id="usernameField" formControlName="username">
+    </div>
+    <div>
+        <label for="passwordField">Password</label>
+        <input type="password" id="passwordField" formControlName="password">
+    </div>
+    <div>
+        <button>Login</button>
+    </div>
+</form>
