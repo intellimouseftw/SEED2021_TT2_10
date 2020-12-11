@@ -1,5 +1,6 @@
 <ng-container *ngIf="login; else elseShowLogin">
   
+<app-user-profile></app-user-profile>
 </ng-container>
 <ng-template #elseShowLogin>
   <app-login (login)="onLogin($event)"></app-login>

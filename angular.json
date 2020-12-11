@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "SEED2021TT210"
+  "defaultProject": "SEED2021TT210",
+  "cli": {
+    "analytics": false
+  }
 }
