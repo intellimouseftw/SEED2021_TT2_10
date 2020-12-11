@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../_services/Auth/auth-service.service';
 import { UserDataService } from '../_services/UserData/user-data.service';
@@ -9,6 +9,9 @@ import { UserDataService } from '../_services/UserData/user-data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @Output()
+  login: EventEmitter<boolean> = new EventEmitter();
+
   // Login form
   loginForm: FormGroup;
 
@@ -22,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form.username.value, this.form.password.value).subscribe(data => {
       if (typeof data !== 'string') {
         // Navigate to user page
+        this.login.emit(true);
       } else {
         // Error occured
       }

@@ -20,7 +20,7 @@ export class AuthService {
 
     return this.http.post(this.AUTH_API_LOGIN, cred).pipe(map(user => {
       if (user['custID'])  {
-        // this.userData.saveUser(user);
+        this.userData.saveUser(user);
         return user;
       }
     }),

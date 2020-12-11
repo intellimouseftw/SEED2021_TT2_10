@@ -1,1 +1,6 @@
-<app-login></app-login>
+<ng-container *ngIf="login; else elseShowLogin">
+  
+</ng-container>
+<ng-template #elseShowLogin>
+  <app-login (login)="onLogin($event)"></app-login>
+</ng-template>
