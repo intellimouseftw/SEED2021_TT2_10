@@ -17,8 +17,8 @@ export class AuthService {
       password: pass
     };
 
-    return this.http.post(`${this.AUTH_API_LOGIN}login`, cred).pipe(map(user => {
-
+    return this.http.post(this.AUTH_API_LOGIN, cred).pipe(map(user => {
+      return user;
     }));
   }
 }

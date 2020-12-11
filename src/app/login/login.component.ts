@@ -19,11 +19,10 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.form.username.value, this.form.password.value).subscribe(data => {
-      console.log(data);
       if (typeof data !== 'string') {
-
+        console.log(data);
       } else {
-
+        // Error occured
       }
     });
   }
