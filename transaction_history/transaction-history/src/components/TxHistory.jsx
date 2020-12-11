@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { getTxData } from '../api/getTxData.api'
 import { getUserData } from '../api/getUserData.api'
 import TxDetails from './TxDetails'
-import '../css/TxHistory.css'
 
 import { txData, userDBdata } from '../static_data'
 
@@ -73,8 +72,8 @@ function TxHistory() {
                     </div>
                     <div className="row text-center">
                         <div className="col">
-                            <button className="form-control btn btn-primary btn-sm btn_width" type="submit">Filter</button>
-                            <button className="form-control btn btn-outline-primary btn-sm btn_width" type="reset" onClick={handleReset}>Reset</button>
+                            <button className="form-control btn btn-primary btn-sm" type="submit">Filter</button>
+                            <button className="form-control btn btn-outline-primary btn-sm" type="reset" onClick={handleReset}>Reset</button>
                         </div>
                     </div>
                 </form>
@@ -88,6 +87,7 @@ function TxHistory() {
                                 <TxDetails key={txID} data={singleTx} txID={txID + 1} userDB={userDB} />
                             )
                         })}
+                        <button className="btn btn-outline-primary" onClick={() => setExpanded(false)}>Hide Transactions...</button>
                     </div> :
                     <div className="container-fluid text-center">
                         {txHist.slice(0, 3).map((singleTx, txID) => {
