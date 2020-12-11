@@ -13,8 +13,8 @@
         <button mat-flat-button>
             <a routerLink="/balance" routerLinkActive="active" style="text-decoration:none;">Balance</a>
         </button>
-        <button mat-flat-button>
-            <a routerLink="/" routerLinkActive="active" style="text-decoration:none;">Log Out</a>
+        <button mat-flat-button (click)="onLogout()">
+            Log Out
         </button>
     </nav>
   </div>

@@ -1,5 +1,4 @@
 const express = require("express");
-const { body } = require("express-validator");
 
 const User = require("../models/user");
 const Token = require("../models/token");
@@ -24,6 +23,8 @@ router.post("/token", isAuth, async (req, res, next) => {
       const token = jwt.sign({ username: username }, "DBSTECHTREK2020", {
         expiresIn: "1h",
       });
+
+      refreshExists.deleteOne({ refreshToken: refreshToken });
       let loadedUser = user;
 
       res.status(200).json({
