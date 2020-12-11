@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import  { MatButtonModule } from '@angular/material/button';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { TransferComponent } from './transfer/transfer.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    routingComponents
+    routingComponents,
+    TransferComponent
   ],
   imports: [
     BrowserModule,
