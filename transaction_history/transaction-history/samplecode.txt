@@ -1,0 +1,70 @@
+import {
+  Component,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit
+} from '@angular/core';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { TxHistory } from '<PATH TO REACT JSX FILE>';
+
+@Component({
+  selector: 'txhistory-react',
+  template: '<div [id]="rootId"></div>'
+})
+export class TxHistoryComponent implements OnChanges, AfterViewInit {
+  @Input() name: string;
+  @Output() submitEvent = new EventEmitter<string>();
+
+  public rootId = 'txhistory-root';
+  private hasViewLoaded = false;
+
+  public ngOnChanges() {
+    this.renderComponent();
+  }
+
+  public ngAfterViewInit() {
+    this.hasViewLoaded = true;
+    this.renderComponent();
+  }
+
+  private renderComponent() {
+    if (!this.hasViewLoaded) {
+      return;
+    }
+
+    const props: userDB =
+	___user-database-array___
+    ;
+
+    ReactDOM.render(
+      React.createElement(TxHistory, props),
+      document.getElementById(this.rootId)
+    );
+  }
+}
+
+
+
+###################################################################
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: 
+    <div className="app-container">
+      <h1>Below is the React Component!</h1>
+      <txhistory-react
+        userDB = ___user-database-array___
+      ></txhistory-react>
+    </div>
+  
+})
+export class AppComponent {
+  submitEvent($event: string) {
+    alert($event);
+  }
+}
