@@ -13,6 +13,7 @@ import { JWTInterceptor } from './_interceptors/jwt.interceptor';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { TransferComponent } from './transfer/transfer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,13 +26,8 @@ import { TransferComponent } from './transfer/transfer.component';
     BrowserAnimationsModule,
     MatButtonModule,
     AppRoutingModule,
-    HttpClientModule
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
     HttpClientModule,
-    FormsModule,
+    LoginComponent,
     ReactiveFormsModule
   ],
   providers: [
