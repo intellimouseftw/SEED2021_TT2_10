@@ -1,29 +1,49 @@
 <div class="container">
 
-    <h2>Add new data</h2>
-    <!-- <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
+    <h2>Tranfer</h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Transfer To</mat-label>
+        <mat-select (selectionChange)="onChange($event)">
+            <mat-option *ngFor="let user of users" [value]="user">
+                {{user.lastName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 
     <mat-card>
         <mat-grid-list cols="1" rowHeight="80px">
             <mat-grid-tile>
                 <mat-form-field>
-                    <mat-label>Sele</mat-label>
-                    <input matInput required>
-                    <mat-hint *ngIf="errors.name.error">{{errors.name.errorText}}</mat-hint>
+                    <mat-label>Amount</mat-label>
+                    <input matInput required (change)="handleFieldChange($event, 'amount')" type ="number"> 
                 </mat-form-field>
             </mat-grid-tile>
 
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Expenses Category</mat-label>
+                    <input matInput required (change)="handleFieldChange($event, 'expensesCat')" type ="number"> 
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Meassage</mat-label>
+                    <input matInput required (change)="handleFieldChange($event, 'message')" type ="number"> 
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <section class="checkbox-section">
+                    <mat-checkbox class="checkbox-margin" (change)="handleFieldChange($event, 'severityNotSevere')">E-Gift?</mat-checkbox>
+                </section>
+            </mat-grid-tile>
         </mat-grid-list>
 
         <div class='buttons'><button mat-raised-button color="primary" (click)="handleSubmit()"> Submit </button></div>
 
-
-    </mat-card> -->
-
+    </mat-card>
 
 
 </div>

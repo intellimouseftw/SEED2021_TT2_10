@@ -1,3 +1,30 @@
 .container {
-    margin : 50px;
- }
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+mat-form-field {
+    margin-right: 12px;
+    width: 60%
+}
+
+mat-hint {
+    color: red !important;
+}
+
+
+.checkbox-section {
+    margin: 12px 0;
+  }
+  
+  .checkbox-margin {
+    margin: 0 12px;
+  }
+
+  .buttons { 
+    display:flex; 
+    justify-content:flex-end; 
+    align-items:center;  
+  } 
