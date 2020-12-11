@@ -11,6 +11,7 @@ const API_SERVICE_URL =
 
 const loginRoute = require("./routes/login");
 const extendSessionRoute = require("./routes/extendSession");
+const userProfileRoute = require("./routes/user");
 
 const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.ih7xw.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 
@@ -53,6 +54,7 @@ app.use(
   // })
 );
 app.use("/token", extendSessionRoute);
+app.use("/user-profile", userProfileRoute);
 
 app.use((error, req, res, next) => {
   console.log(error);

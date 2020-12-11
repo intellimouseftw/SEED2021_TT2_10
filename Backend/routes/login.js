@@ -2,12 +2,11 @@ const express = require("express");
 const { body } = require("express-validator");
 
 const User = require("../models/user");
-const isAuth = require("../middleware/is-auth");
 const randtoken = require("rand-token");
 const Token = require("../models/token");
 const jwt = require("jsonwebtoken");
-const axios = require("axios");
 const bcrypt = require("bcryptjs");
+const request = require("request");
 
 const router = express.Router();
 
@@ -62,15 +61,28 @@ router.post(
       });
 
       await newToken.save();
-      // const dbsData = await axios.post(
-      // "https://u8fpqfk2d4.execute-api.ap-southeast-1.amazonaws.com/techtrek2020/login",
-      //   { username: req.body.username, password: req.body.password },
-      //   { "x-api-key": "Z1DcxhVb3J2TR8rrWiqJh1vFGMHJMPI0a8Wi6Wse" }
-      // );
-      res.status(200).json({
-        token: token,
-        userId: loadedUser._id.toString(),
-        refreshToken: refreshToken,
+
+      const options = {
+        uri:
+          "https://u8fpqfk2d4.execute-api.ap-southeast-1.amazonaws.com/techtrek2020/login",
+        body: JSON.stringify(postData),
+        method: "POST",
+        headers: {
+          "user-agent": "node.js",
+          "Content-Type": "application/json",
+          "x-api-key": "Z1DcxhVb3J2TR8rrWiqJh1vFGMHJMPI0a8Wi6Wse",
+        },
+      };
+      request(options, (error, response, body) => {
+        if (error) console.log(error);
+
+        if (response.statusCode !== 200) {
+          return res.status(404).json({ msg: "Invalid credentials" });
+        }
+
+        const dbsData = JSON.parse(body);
+        dbsData.token = token;
+        res.send(dbsData);
       });
     } catch (err) {
       if (!err.statusCode) {
