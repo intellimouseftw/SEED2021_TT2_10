@@ -1,12 +1,13 @@
-
-<ng-container *ngIf="login; else elseShowLogin">
-    <div>
-        <h1>Hello</h1>
-        <app-navbar></app-navbar>
-        <router-outlet></router-outlet>
-    </div>
-</ng-container>
-
-<ng-template #elseShowLogin>
-  <app-login (login)="onLogin($event)"></app-login>
-</ng-template>
+<div>
+  <ng-container *ngIf="login; else elseShowLogin">
+      <div>
+          <h1>Hello</h1>
+          <app-navbar></app-navbar>
+          <router-outlet></router-outlet>
+      </div>
+  </ng-container>
+  
+  <ng-template #elseShowLogin>
+    <app-login (login)="onLogin($event)"></app-login>
+  </ng-template>
+</div>

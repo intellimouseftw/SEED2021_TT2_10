@@ -6,8 +6,8 @@ import { UserDataService } from './_services/UserData/user-data.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  login = true;
+export class AppComponent implements OnInit {
+  login = false;
 
   onLogin = (event: any): void => {
     this.login = event;

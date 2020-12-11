@@ -87,7 +87,7 @@ export class UserProfileComponent implements OnInit {
   clickSelectedUser(event) {
     console.log(event);
     // api call
-    // this.getAccountProfile(event);
+     this.getAccountProfile(event);
 
     // temp solution
     if (event == 10) {
@@ -111,7 +111,7 @@ export class UserProfileComponent implements OnInit {
     }
 
     // api call and update account
-    // this.updateAccountBalance(request);
+     this.updateAccountBalance(request);
 
     this.accountDetail.availableBal = amount;   // temp solution
   }
